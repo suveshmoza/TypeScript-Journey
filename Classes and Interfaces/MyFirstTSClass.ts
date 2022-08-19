@@ -1,9 +1,19 @@
 class Department {
 	protected name: string;
 	protected employees: string[] = [];
+	static deptId: string = '2010';
 	constructor(name: string) {
 		this.name = name;
+		console.log(Department.deptId);
 	}
+
+	get getName(): string {
+		return this.name;
+	}
+	set getName(name: string) {
+		this.name = name;
+	}
+
 	describe(this: Department) {
 		console.log('Department is ' + this.name);
 	}
@@ -17,7 +27,7 @@ class Department {
 }
 
 class AccountingDepartment extends Department {
-	constructor(department: string, private reports: string[]) {
+	private constructor(department: string, private reports: string[]) {
 		super(department);
 	}
 	addReport(report: string) {
@@ -33,3 +43,5 @@ engineering.addEmployee('Michael');
 engineering.addEmployee('Joey');
 engineering.printInformation();
 engineering.describe();
+
+// const Accounting = new AccountingDepartment('Accounting');
